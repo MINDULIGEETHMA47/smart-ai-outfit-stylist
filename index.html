@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Outfit Stylist</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+
+  <h1>👗 AI Outfit Stylist</h1>
+
+  <h3>Upload Shirt Image</h3>
+  <input type="file" id="shirtImg" accept="image/*"><br><br>
+
+  <h3>Upload Pants Image</h3>
+  <input type="file" id="pantsImg" accept="image/*"><br><br>
+
+  <button onclick="checkOutfit()">Check Outfit</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function getRandomColor() {
+      const colors = ["red", "blue", "black", "white"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function checkOutfit() {
+      let shirtFile = document.getElementById("shirtImg").files[0];
+      let pantsFile = document.getElementById("pantsImg").files[0];
+
+      if (!shirtFile || !pantsFile) {
+        document.getElementById("result").innerText = "⚠️ Upload both images!";
+        return;
+      }
+
+      // Fake AI (random color assign 😄)
+      let shirtColor = getRandomColor();
+      let pantsColor = getRandomColor();
+
+      if (shirtColor === "red" && pantsColor === "black") {
+        document.getElementById("result").innerText =
+          "✅ Perfect Match! (Red + Black)";
+      } else if (shirtColor === "blue" && pantsColor === "white") {
+        document.getElementById("result").innerText =
+          "✅ Nice Match! (Blue + White)";
+      } else {
+        document.getElementById("result").innerText =
+          "❌ Not a Good Match";
+      }
+    }
+  </script>
+
+</body>
+</html>
